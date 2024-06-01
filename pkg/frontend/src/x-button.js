@@ -6,6 +6,10 @@ import { LitElement, html, css } from "lit";
 export class XButton extends LitElement {
   static styles = css`
     :host {
+      display: block;
+    }
+
+    .button {
       background-color: hsl(266, 85%, 58%);
       border-radius: 8px;
       color: hsl(220, 23%, 95%);
@@ -17,22 +21,41 @@ export class XButton extends LitElement {
       text-align: center;
       transition: background-color linear 100ms;
       user-select: none;
+      text-decoration: none;
     }
 
-    :host(:hover) {
+    .button:hover {
       background-color: hsl(266, 85%, 50%);
     }
 
-    :host(:active) {
+    .button:active {
       background-color: hsl(266, 85%, 42%);
     }
   `;
+
+  static properties = {
+    href: {},
+  };
+
+  constructor() {
+    super();
+
+    this.href = "";
+  }
 
   /**
    * @returns {unknown} HTML for a button.
    */
   render() {
-    return html` <slot></slot> `;
+    if (this.href === "") {
+      return html` <slot class="button"></slot> `;
+    }
+
+    return html`
+      <a class="button" href=${this.href}>
+        <slot></slot>
+      </a>
+    `;
   }
 }
 
