@@ -25,6 +25,10 @@ func main() {
 		fmt.Printf("Text received: %q\n", data)
 	})
 
+	mux.HandleFunc("DELETE /x/delete/{id}", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "You are deleted %q\n", r.PathValue("id"))
+	})
+
 	mux.HandleFunc("/{id}", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "You are requested %q\n", r.PathValue("id"))
 	})
