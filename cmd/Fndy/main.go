@@ -31,6 +31,10 @@ func main() {
 		fmt.Printf("Text received: %q\n", data)
 	})
 
+	mux.HandleFunc("/{id}", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "You are requested %q\n", r.PathValue("id"))
+	})
+
 	fmt.Printf("Executing web server at port: %s\n", os.Getenv("PORT"))
 
 	if err := http.ListenAndServe(":"+os.Getenv("PORT"), mux); err != nil {
