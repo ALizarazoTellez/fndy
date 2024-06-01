@@ -14,13 +14,7 @@ func main() {
 		fmt.Fprintln(w, "This is the Fndy webapp!")
 	})
 
-	mux.HandleFunc("/x/upload", func(w http.ResponseWriter, r *http.Request) {
-		if r.Method != http.MethodPut {
-			w.WriteHeader(http.StatusMethodNotAllowed)
-			fmt.Fprintln(w, "Using incorrect method, this endpoint requires PUT.")
-			return
-		}
-
+	mux.HandleFunc("PUT /x/upload", func(w http.ResponseWriter, r *http.Request) {
 		data, err := io.ReadAll(r.Body)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
