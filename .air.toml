@@ -1,3 +1,7 @@
 
+
 [build]
-cmd = "go build -o tmp/main github.com/ALizarazoTellez/fndy/cmd/Fndy"
+cmd = "go-task build"
+bin = "tmp/fndy"
+exclude_dir = ["tmp", "pkg/frontend/node_modules", "pkg/frontend/build"]
+include_ext = ["go", "html", "js"]

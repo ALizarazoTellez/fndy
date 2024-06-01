@@ -3,6 +3,24 @@
 version: "3"
 
 tasks:
+  default:
+    desc: Run AIR.
+    cmds:
+      - PORT=8080 air
+    silent: true
+
+  build:
+    desc: Build the project.
+    cmds:
+      - task: build-frontend
+      - task: build-backend
+
+  build-backend:
+    desc: Compile backend.
+    cmds:
+      - go build -o tmp/fndy github.com/ALizarazoTellez/fndy/cmd/Fndy
+    silent: true
+
   build-frontend:
     desc: Compile frontend.
     dir: pkg/frontend
