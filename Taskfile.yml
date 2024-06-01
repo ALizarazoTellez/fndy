@@ -1,0 +1,11 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  build-frontend:
+    desc: Compile frontend.
+    dir: frontend
+    cmds:
+      - bunx rollup -c
+    silent: true

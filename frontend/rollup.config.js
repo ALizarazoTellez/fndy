@@ -1,5 +1,4 @@
 // Import rollup plugins
-import { copy } from "@web/rollup-plugin-copy";
 import resolve from "@rollup/plugin-node-resolve";
 import summary from "rollup-plugin-summary";
 
@@ -10,15 +9,16 @@ export default {
 
     // Print bundle summary
     summary(),
-
-    // Optional: copy any static assets to build directory
-    copy({
-      patterns: ["images/**/*"],
-    }),
   ],
 
+  input: {
+    file: "index.js",
+  },
+
   output: {
+    format: "iife",
     dir: "build",
+    entryFileNames: "components.js",
   },
 
   preserveEntrySignatures: "strict",
