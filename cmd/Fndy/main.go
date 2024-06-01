@@ -5,6 +5,8 @@ import (
 	"io"
 	"net/http"
 	"os"
+
+	"github.com/ALizarazoTellez/fndy/pkg/frontend"
 )
 
 func main() {
@@ -12,6 +14,12 @@ func main() {
 
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintln(w, "This is the Fndy webapp!")
+	})
+
+	mux.HandleFunc("/x/assets/components.js", func(w http.ResponseWriter, r *http.Request) {
+		if _, err := w.Write(frontend.AssetComponents); err != nil {
+			fmt.Println("Unexpected error:", err)
+		}
 	})
 
 	mux.HandleFunc("PUT /x/upload", func(w http.ResponseWriter, r *http.Request) {
