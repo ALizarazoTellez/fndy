@@ -8,8 +8,39 @@
     <title>Fndy</title>
 
     <script defer src="x/assets/components.js"></script>
+
+    <style>
+      body {
+        background-color: hsl(220, 23%, 95%);
+        color: hsl(234, 16%, 35%);
+        display: flex;
+        flex-flow: column nowrap;
+        height: 100dvh;
+        margin: 0;
+      }
+
+      x-header {
+        flex-grow: 1;
+      }
+
+      .buttons {
+        gap: 16px;
+        padding: 16px;
+        display: flex;
+        flex-flow: row wrap;
+      }
+
+      .buttons x-button {
+        flex-grow: 1;
+      }
+    </style>
   </head>
+
   <body>
-    The Fndy application.
+    <x-header></x-header>
+    <div class="buttons">
+      <x-button> Create new snippet </x-button>
+      <x-button> View my snippets </x-button>
+    </div>
   </body>
 </html>
