@@ -17,6 +17,7 @@ func main() {
 	})
 
 	mux.HandleFunc("/x/assets/components.js", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Add("Content-Type", "application/javascript")
 		if _, err := w.Write(frontend.AssetComponents); err != nil {
 			fmt.Println("Unexpected error:", err)
 		}
