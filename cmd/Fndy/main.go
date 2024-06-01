@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/ALizarazoTellez/fndy/internal/templates"
 	"github.com/ALizarazoTellez/fndy/pkg/frontend"
 )
 
@@ -13,7 +14,7 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "This is the Fndy webapp!")
+		templates.Index.Execute(w, nil)
 	})
 
 	mux.HandleFunc("/x/assets/components.js", func(w http.ResponseWriter, r *http.Request) {
